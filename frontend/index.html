@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+<head>
+    <title>To-Do App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="TodoController">
+
+    <div class="container">
+        <h1>To-Do Management</h1>
+
+        <input type="text" ng-model="newTask" placeholder="Enter task">
+        <button ng-click="addTask()">Add Task</button>
+
+        <ul>
+            <li ng-repeat="task in tasks">
+                <input type="checkbox" ng-model="task.completed" ng-change="updateTask(task)">
+                <span ng-class="{done: task.completed}">{{task.title}}</span>
+
+                <button class="delete" ng-click="deleteTask(task._id)">X</button>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
